@@ -1,17 +1,16 @@
 package virtualkey.main;
-import java.util.Scanner;
 
 import virtualkey.util.*;
 
 public class VirtualKeyApp {
 
 	public static void main(String[] args) {
+		//Directory.makeDirectory(); //created the directory that will store our files
 		
-		//initialize the scanner object that will be used to get the input from the user
+		WelcomeScreen.welcome(); //prints the Welcome Screen
+		MainMenu.mainMenu();	 //calls the main menu method
 		
-		WelcomeScreen.welcome();
-		MainMenu.mainmenu();
-		System.out.println("Bye Bye");	
+		System.out.println("Bye Bye");	 
 
 	}
 

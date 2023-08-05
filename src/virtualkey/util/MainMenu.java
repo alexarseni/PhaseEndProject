@@ -27,10 +27,19 @@ public class MainMenu {
 			input = sc.nextInt(); //take value from keyboard
 				switch(input) {
 					case 1: System.out.println("We will call the display method");
-					vks.displayFiles();
+					String sortedFiles[] = vks.getFiles();
+					if(sortedFiles.length!=0) {
+						for(String s:sortedFiles) { //iterate through the strings in the array string	
+							System.out.println(s);
+						}
+					}
+					else {
+						System.out.println("There are no files to display");
+					}
 					break;
+					
 					case 2: System.out.println("We will call the submenu method");
-					SubMenu.subMenu();
+					SubMenu.subMenu(vks);
 					break;
 					case 3: System.out.println("We will exit");
 					exit = true;

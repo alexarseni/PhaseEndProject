@@ -27,25 +27,65 @@ public class VirtualKeyService {
 			file4.createNewFile();
 		}
 		catch (IOException e){
-			System.out.println("Files could not be created");
+			System.out.println("Files could not be created - IO Exception");
+		}
+		
+		catch (SecurityException s){
+			System.out.println("I do not have write access to the destination");
 		}
 	}
 	
 	//This method will display the contents of the directory
-	public void displayFiles() {
+	public String[] getFiles() {
 		
 		String[] sortedFiles = destination.list(); //get the list of file names in the destination directory
 		//String[] sortedFiles = {"maria", "alex", "dimitra","danil"}; //astring array to check the sorting
 		
+		
 		if(sortedFiles.length!=0) {
 			Arrays.sort(sortedFiles); //sort the names 
-			for(String s:sortedFiles) { //iterate through the strings in the array string
-			System.out.println(s);
+		}
+			return sortedFiles;
+//			for(String s:sortedFiles) { //iterate through the strings in the array string	
+//				System.out.println(s);
+//			}
+		
+//		else {
+//			String empty[] = {};
+//			return empty;
+//		}
+		
+	}
+	
+	public String addFile(String filename){
+		File newFile = new File(destination+"/"+filename);
+
+		try{
+			if(newFile.createNewFile()) {
+				return "File "+filename+" created successfully";
+				
+			}
+			else {
+				return "The file already exists";
 			}
 		}
-		else {
-			System.out.println("There are no files to display");
+		catch (IOException e){
+			return "Files could not be created - IO Exception";
 		}
+		
+		catch (SecurityException s){
+			return "I do not have write access to the destination";
+		}	
+	}
+	
+	public String searchFile(String filename) {
+		File newFile = new File(destination+"/"+filename);
+			if(newFile.exists()) {
+				return "Found the file you are searching for";
+			}
+			else {
+				return "The file you are searching for does not exist";
+			}
 		
 	}
 

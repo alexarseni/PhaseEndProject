@@ -80,13 +80,27 @@ public class VirtualKeyService {
 	
 	public String searchFile(String filename) {
 		File newFile = new File(destination+"/"+filename);
-			if(newFile.exists()) {
-				return "Found the file you are searching for";
+		if(newFile.exists()) {
+			return "Found the file you are searching for";
+		}
+		else {
+			return "The file you are searching for does not exist";
+		}
+	}
+	
+	public String deleteFile(String filename) {
+		File newfile = new File(destination+"/"+filename);
+		try {
+			if (newfile.exists()) {
+				newfile.delete();
+				return "File deleted sucessfully";
 			}
 			else {
-				return "The file you are searching for does not exist";
+				return "The file you want to delete does not exist";
 			}
-		
+		}
+		catch(SecurityException s) {
+			return "I do not have delete access for this file";
+		}
 	}
-
 }

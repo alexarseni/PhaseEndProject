@@ -7,7 +7,7 @@ public class WelcomeScreen {
 		System.out.println("Welcome to my application");
 		System.out.println("Application name: VirtualKeyApp");
 		System.out.println("Developer: Arseni Alexandra");
-		System.out.println("Email: alexandra.arseni@vodafone.com");
+		System.out.println("Email: alexandra.arseni@vodafone.com\n");
 	}
 
 }

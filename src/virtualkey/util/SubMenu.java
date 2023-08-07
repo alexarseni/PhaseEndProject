@@ -13,7 +13,7 @@ public class SubMenu {
 		boolean exit = false;
 		
 		System.out.println("Here are the sub-menu choices:");
-		System.out.println("1. Add a file 2. Delete a file 3. Search for a file 4. Exit the submenu");
+		System.out.println("1. Add a file 2. Delete a file 3. Search for a file 4. Exit the submenu\n");
 		
 		int input;
 		String filename;
@@ -26,23 +26,28 @@ public class SubMenu {
 					case 1: System.out.println("Please type the name of the file you want to add");
 					filename = sc.next();
 					System.out.println(vks.addFile(filename));
+					System.out.println();
 					break;
-					case 2: System.out.println("We will call the delete method");
+					case 2: System.out.println("Please type the name of the file you want to delete.");
+					filename = sc.next();
+					System.out.println(vks.deleteFile(filename));
+					System.out.println();
 					break;
 					case 3: System.out.println("Please type the name of the file you want to search for.");
 					filename = sc.next();
 					System.out.println(vks.searchFile(filename));
+					System.out.println();
 					break;
-					case 4: System.out.println("We will exit");
+					case 4: System.out.println("Back to main menu\n");
 					exit = true;
 					break;
 					default: 
-					throw new NumberOutOfRangeException("The number you typed is not in the range 1-4. Try again");
+					throw new NumberOutOfRangeException("The number you typed is not in the range 1-4. Try again\n");
 					
 				}
 			}
 			catch(InputMismatchException e) {
-				System.out.println("What you typed was not a number. Try again");
+				System.out.println("What you typed was not a number. Try again\n");
 			}
 			
 			catch(NumberOutOfRangeException n){

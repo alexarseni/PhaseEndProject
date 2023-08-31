@@ -15,46 +15,36 @@ public class VirtualKeyService {
 	}
 	//We use this function to create some test files
 	public void createSomeFiles() {
-		//File file1 = new File(destination+"/file1.txt");
-		//File file2 = new File(destination+"/file2.txt");
 		File file1 = new File(destination+"/maria.txt");
 		File file2 = new File(destination+"/alex.txt");
 		
 		try {
 			file1.createNewFile();
 			file2.createNewFile();
-			//file3.createNewFile();
-			//file4.createNewFile();
 		}
 		catch (IOException e){
 			System.out.println("Files could not be created - IO Exception");
 		}
-		
-		catch (SecurityException s){
-			System.out.println("I do not have write access to the destination");
-		}
 	}
 	
-	//This method will display the contents of the directory
+	//This method will display the contents of the destination directory
 	public String[] getFiles() {
 		
-		
 		String[] sortedFiles = destination.list(); //get the list of file names in the destination directory
-		//String[] sortedFiles = {"maria", "alex", "dimitra","danil"}; //astring array to check the sorting
 		
-		if(sortedFiles.length!=0) {
+		if(sortedFiles.length!=0) { //if the returned array is not empty, proceed to sort it.
 			Arrays.sort(sortedFiles); //sort the names 
 		}
-			return sortedFiles;
+		return sortedFiles;
 	}
-	
+	//The add method takes the user-specified name as an argument
 	public String addFile(String filename){
+		//create newFile object with the correct path.
 		File newFile = new File(destination+"/"+filename);
 
-		try{
+		try{ //if the .createNewFile() command creates the file successfully it returns true.
 			if(newFile.createNewFile()) {
 				return "File "+filename+" created successfully";
-				
 			}
 			else {
 				return "The file already exists";
@@ -62,15 +52,13 @@ public class VirtualKeyService {
 		}
 		catch (IOException e){
 			return "Files could not be created - IO Exception";
-		}
-		
-		catch (SecurityException s){
-			return "I do not have write access to the destination";
 		}	
 	}
-	
+	//The searchFile takes the user-specified name as an argument.
 	public String searchFile(String filename) {
+		//create the correct object/path for the file
 		File newFile = new File(destination+"/"+filename);
+		//the .exists() method return true, if the file already exists.
 		if(newFile.exists()) {
 			return "Found the file you are searching for";
 		}
@@ -78,20 +66,15 @@ public class VirtualKeyService {
 			return "The file you are searching for does not exist";
 		}
 	}
-	
+	//The deleteFile takes the user-specified name of the file as an argument.
 	public String deleteFile(String filename) {
 		File newfile = new File(destination+"/"+filename);
-		try {
-			if (newfile.exists()) {
-				newfile.delete();
-				return "File deleted sucessfully";
-			}
-			else {
-				return "The file you want to delete does not exist";
-			}
+		if (newfile.exists()) { //we first check whther the file exists
+			newfile.delete(); //if it does then we proceed to delete it
+			return "File deleted sucessfully";
 		}
-		catch(SecurityException s) {
-			return "I do not have delete access for this file";
+		else { //if it does not exists, we notify the user.
+			return "The file you want to delete does not exist";
 		}
 	}
 }

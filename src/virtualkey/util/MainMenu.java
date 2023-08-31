@@ -2,7 +2,6 @@ package virtualkey.util;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import virtualkey.exception.*;
 import virtualkey.service.VirtualKeyService;
 
 public class MainMenu {
@@ -10,16 +9,17 @@ public class MainMenu {
 	public static void mainMenu() {
 		
 		Scanner sc = new Scanner(System.in); //initialize the scanner object to take input from keyboard
-		boolean exit = false;
-		VirtualKeyService vks = new VirtualKeyService();
+		boolean exit = false; //this variable will be used to exit the do..while loop later on
+		VirtualKeyService vks = new VirtualKeyService(); //create a VirtualKeyService object to gain access to the business methods.
 		
+		//this method is optional. it creates two test files for easier testing.
 		vks.createSomeFiles();
 		
+		//prompt the user with his choices.
 		System.out.println("Here are your choices:");
 		System.out.println("1. Display all file names 2. Access Business Methods 3. Exit the application\n");
 		
-		int input;
-		
+		int input; //this variable will store the user's input
 		
 		do {
 			System.out.println("Please enter your choice by writing a number in the range 1-3");
@@ -28,8 +28,9 @@ public class MainMenu {
 				switch(input) {
 					case 1:
 					String sortedFiles[] = vks.getFiles();
+					//we need to to iterate through the array of strings to get each file name, only if the array is not empty.
 					if(sortedFiles.length!=0) {
-						for(String s:sortedFiles) { //iterate through the strings in the array string	
+						for(String s:sortedFiles) { 	
 							System.out.println(s);
 						}
 						System.out.println();
@@ -40,14 +41,15 @@ public class MainMenu {
 					break;
 					
 					case 2:
+					//we call the submenu method and pass the VirtualKeyService object as an argument
 					SubMenu.subMenu(vks);
 					break;
 					
 					case 3: System.out.println("We will exit the application");
-					exit = true;
+					exit = true; //change the variable's value to true, to exit the while loop.
 					break;
-					default: 
-					throw new NumberOutOfRangeException("The number you typed is not in the range 1-3. Try again\n");
+					default:
+					System.out.println("The number you typed is out of range");
 					
 				}
 			}
@@ -55,9 +57,6 @@ public class MainMenu {
 				System.out.println("What you typed was not a number. Try again\n");
 			}
 			
-			catch(NumberOutOfRangeException n){
-				System.out.println(n.getMessage());
-			}
 			sc.nextLine(); //read and discard anything else the user may have inputed.
 			
 		}while(exit==false);

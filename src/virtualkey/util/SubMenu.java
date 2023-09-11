@@ -20,8 +20,10 @@ public class SubMenu {
 			System.out.println("Please enter your choice by writing a number in the range 1-4");
 			try {
 			input = sc.nextInt(); //take value from keyboard
+			sc.nextLine();
 				switch(input) {
-					case 1: System.out.println("Please type the name of the file you want to add");
+					case 1: 
+					System.out.println("Please type the name of the file you want to add");
 					filename = sc.next(); //take the name of the file from user
 					System.out.println(vks.addFile(filename)); //call the addFile business method and print the returned statement
 					System.out.println();
@@ -48,7 +50,7 @@ public class SubMenu {
 				System.out.println("What you typed was not a number. Try again\n");
 			}
 			
-			sc.nextLine(); //read and discard anything else the user may have inputed.
+			//sc.nextLine(); //read and discard anything else the user may have inputed.
 			
 		}while(exit==false);
 		

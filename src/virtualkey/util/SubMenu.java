@@ -51,6 +51,7 @@ public class SubMenu {
 			}
 			catch(InputMismatchException e) {
 				System.out.println("What you typed was not a number. Try again\n");
+				sc.nextLine();
 			}
 			
 			

@@ -27,16 +27,19 @@ public class SubMenu {
 					filename = sc.next(); //take the name of the file from user
 					System.out.println(vks.addFile(filename)); //call the addFile business method and print the returned statement
 					System.out.println();
+					sc.nextLine(); //discard anything else the user may have typed
 					break;
 					case 2: System.out.println("Please type the name of the file you want to delete.");
 					filename = sc.next(); //take the name of the file from user
 					System.out.println(vks.deleteFile(filename)); //call the deleteFile method and print the returned statement
 					System.out.println();
+					sc.nextLine(); //discard anything else the user may have typed
 					break;
 					case 3: System.out.println("Please type the name of the file you want to search for.");
 					filename = sc.next();//take the name of the file from user
 					System.out.println(vks.searchFile(filename)); //call the searchFile method and print the returned statement
 					System.out.println();
+					sc.nextLine(); //discard anything else the user may have typed
 					break;
 					case 4: System.out.println("Back to main menu\n");
 					exit = true; //change the variable's value to true to exit the do...while loop.
@@ -49,6 +52,7 @@ public class SubMenu {
 			catch(InputMismatchException e) {
 				System.out.println("What you typed was not a number. Try again\n");
 			}
+			
 			
 		}while(exit==false);
 		

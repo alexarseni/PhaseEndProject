@@ -13,7 +13,7 @@ public class VirtualKeyService {
 			destination.mkdir();
 		}
 	}
-	//We use this function to create some test files
+	//We use this function to create some test files. Optional
 	public void createSomeFiles() {
 		File file1 = new File(destination+"/maria.txt");
 		File file2 = new File(destination+"/alex.txt");
